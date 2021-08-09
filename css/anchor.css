@@ -1,0 +1,28 @@
+.anchor {
+	position: fixed;
+	display: none;
+	width: 30px;
+	height: 30px;
+	bottom: 5vw;
+	right: 5vw;
+}
+
+.anchor__link {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 40px solid #2ee21f;
+	-webkit-box-shadow: 2px 3px 2px 2px #253f0b;
+	        box-shadow: 2px 3px 2px 2px #253f0b;
+}
+
+.anchor__link:hover {
+	border-bottom: 40px solid #75f509;
+}
+
+.anchor__link:active {
+	-webkit-box-shadow: 1px 1px 1px 1px #253f0b;
+	        box-shadow: 1px 1px 1px 1px #253f0b;
+}

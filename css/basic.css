@@ -1,0 +1,9 @@
+.disfonia {
+	color: purple;
+}
+.disfonia__popup {
+	display: none;
+}
+.disfonia:hover .disfonia__popup {
+	display: block;
+}

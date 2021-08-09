@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>Логобум</title>
+		<meta charset="UTF-8">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="assets/css/animate.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="shortcut icon" href="../favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+	</head>
+
+<style>
+		body{
+			width:80%;
+			height: 100vh;
+			margin: 0px auto;
+		}
+		.wrap{
+			margin: 0px auto;
+		}
+		.draggable{
+
+		}
+		
+		.theme{
+			margin: 0 0 0 25px;
+		}
+		h4, .themeSelected{
+			margin: 15px 0 15px 0;
+			font-size: 25px;
+			color: darkgrey;
+			display: inline-block;
+		}
+		.themeSelected{
+			margin: 0 0 0 25px;
+			border: 1px solid darkgrey;
+			box-shadow: 0 0 10px darkgrey;
+		}
+		.shadow{
+			width:100%;
+			display:flex;
+			flex-direction:column;
+			align-items: center;
+			flex-wrap:wrap;
+			width:100%;
+			height:100vh;
+			margin: 0 auto;
+			border: 1px solid darkgrey;
+			box-shadow: 0 0 10px darkgrey;
+
+		}
+		 div1{margin-top:-20px;}
+		.div1, .div2{
+				position: relative;
+		  	display:inline-block;
+		  	width: 10vw;
+		  	height: 10vw;
+		 		margin: 15px 50px 0px 20px;
+		 		padding: 10px;
+		  	border: 1px solid black;
+		}
+		.div2 img, .div1 img{
+			width: 9vw; height: 9vw;
+			position:absolute;
+			top: 0;left: 0;
+			object-fit:fill;
+		}
+		
+</style>
+
+
+<body>
+		<div class="wrapper">
+<header class="header">
+	<div class="container">
+		<div class="header__main">
+			<div class="header__logo">
+				 	<img src="img/piramida.jpg" alt="">
+			</div>
+			<div class="header__column">
+				<div class="header__row-slogan ">
+					<h1 class="_icon-twitter">Логобум. Логопедия простыми словами.</h1>
+					<p class="header__row-subslogan "> Будь в курсе того, что происходит с твоим ребенком, чтобы помочь вовремя!</p>
+				</div>
+				<div class="header__row">
+					<nav class="nav__menu menu">
+					 	<ul class="menu__list">
+					 		<li class="fa fa-umbrella"><a class="menu__link"  href="index.html">Главная</a></li>
+					 		<li class="fa fa-signal"><a class="menu__link" href="basic.html">Основы логопедии</a></li>
+					 		<li class="_icon-fire"><a class="menu__link" href="workout.html">Гимнастика</a></li>
+					 		<li class="fa fa-solid fa-star"><a class="menu__link" href="breath.html">Развитие дыхания</a></li>
+					 		<li class="fa fa-smile"><a class="menu__link" href="norms.html">Нормы развития речи</a></li>
+					 		<li class="fa fa-envelope"><a class="menu__link" href="male.html">Обратная связь</a></li>
+					 	</ul>
+					 </nav>
+				</div>
+			</div>
+								<!-- 
+						html меню с иконкой бургера-->
+				<div class="header__burger">
+					<div class="header__menu menu">
+							<div class="menu__icon icon-menu">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+					</div>
+				</div>
+
+		</div>
+	</div>
+</header>	 <div>
+		<h4>Перетащи картинку на её тень!<h4>
+		<p class="theme">Выбери тему: 
+			<select name="theme" class="themeSelected" >
+				<option value="animal">Животные</option>	
+				<option value="birds">Птицы</option>
+				<option value="fish">Подводный мир</option>					
+			</select>
+		</p>
+	</div>
+	<div class="wrap">
+			<div class="shadow-wrap shadow">	
+				<!--elements will be inputing by programm-->
+			</div>	
+	</div>
+	
+<footer class="footer">
+	<div class="footer__container container">
+		<div class="footer__row">
+			<p>&#64;2021 интеллектуальная собственность корпорации "Логобум".</p>
+		</div>
+	</div>
+</footer>	</div>
+</body>
+<script>
+
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+ ev.preventDefault();
+  let data = ev.dataTransfer.getData("text");
+  let dragElement=document.getElementById(data);
+  let dragElementParent=dragElement.parentElement;
+  let targetParent=ev.target.parentElement;
+ 
+  if (targetParent.id.match(/\d+/)[0]-1 == dragElement.id.match(/\d+/)[0]){
+	if (targetParent.classList.contains('shadow')) {
+		ev.target.appendChild(dragElement);
+
+	} else {
+			targetParent.appendChild(dragElement);
+			targetParent.style.border="2px solid red";
+			dragElementParent.style.border="2px solid white";
+	}		
+  }
+}
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+}
+
+function generateRandomSequencie(arr){
+	let j, temp;
+	for (let i=0; i<arr.length-1; i++) {
+		j=getRandomIntInclusive(0, i);
+		temp=arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	return arr;
+}
+
+
+function fillImgNames(complexityLength,imgFolder){
+		let imgNames=[];
+		for (let i=1; i<=complexityLength;i++){
+			imgNames[i]=i;
+		}
+		return imgNames;
+}
+
+function chooseTheme(theme){
+	let folder;
+	switch (theme){
+	 case 'animal':folder="img/animalsSmall";break;
+	 case 'birds':folder="img/birdsSmall";break;
+	 case 'fish':folder="img/fishSmall";break;
+	 default: folder="img/animalsSmall"; break;
+	 }
+	 return folder;
+}
+
+function removeChild(parent) {
+  while (parent.firstChild) {
+    parent.firstChild.remove();
+  }
+}
+
+function createGame(folder, rs, rsContur){ //rs=randomSequencie	Имена картинок идут от1 до 10 подряд, а потом перемешиваются в randomSequencie
+	let shadowWrap = document.querySelector('.shadow');
+	for (let i=0; i<=rs.length-1; i++) {
+			shadowWrap.insertAdjacentHTML('beforeend', `<div id="div${2*rs[i]+1}" class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"  width="88" height="90">
+				<img src=${folder}/${rs[i]}.jpg class="draggable" draggable="true" ondragstart="drag(event)" id="drag${2*rs[i]+1}" >
+				<\/div>`);
+			shadowWrap.insertAdjacentHTML('beforeend', `<div id="div${2*(rsContur[i]+1)}" class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"  width="89" height="91">
+				<img src=${folder}/${rsContur[i]}_contur.png id="drag${2*(rsContur[i]+1)}" draggable="true" >
+				<\/div>`);
+				
+	}
+}
+
+///////////тело скрипта/////////////////////////////////////////////
+ window.addEventListener('DOMContentLoaded', function() {
+	//Здесь опишем, что нужно делать при старте + все события по умолчанию
+	let folder=chooseTheme('animal');
+	let qvo=8;
+	let imgNames=fillImgNames(qvo, ''),
+		imgNamesContur=fillImgNames(qvo, '');
+		imgNames.shift();
+		imgNamesContur.shift();
+		imgNames=generateRandomSequencie(imgNames);
+		imgNamesContur=generateRandomSequencie(imgNamesContur);	
+	
+		createGame(folder, imgNames, imgNamesContur);
+	
+	//Перерисовываем игру при смене темы 
+	document.querySelector(".themeSelected").addEventListener('change',(e)=>{
+		let parent=document.querySelector('.shadow');
+		console.log(e.target.value);
+		folder=chooseTheme(e.target.value);
+		removeChild(parent);
+		imgNames=fillImgNames(qvo, ''),
+		imgNamesContur=fillImgNames(qvo, '');
+		imgNames.shift();
+		imgNamesContur.shift();
+		imgNames=generateRandomSequencie(imgNames);
+		imgNamesContur=generateRandomSequencie(imgNamesContur);	
+		createGame(folder, imgNames, imgNamesContur);
+	});
+});
+
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/birds.css">
+	<title>Найди пару</title>
+</head>
+<div class="container">
+	<header>
+		<div class="name">
+			<h1>Птичечки! Найди пару! Таймер запишет Ваше время поиска!</h1>
+			<hr>
+			<h3>Будь лучшим! Найди птичке пару!</h3>
+		</div>
+		<div class="actions__complexity">
+			<p><input type="radio" name="complexity" value="1"> низкая сложность</p>
+			<p><input type="radio" name="complexity" value="2" checked> средняя сложность</p>
+			<p><input type="radio" name="complexity" value="3"> высокая сложность</p>
+		</div>
+		<div class="actions__variants">
+			<p><input type="radio" name="variant" value="1" checked>птицы</p>
+			<p><input type="radio" name="variant" value="2">рыбы</p>
+			<p><input type="radio" name="variant" value="3">животные</p>
+		</div>
+	</header>
+	<body>
+	<hr>
+	<div class="wrap">
+		<div class="birds-wrap birds">	
+			<!--elements will be inputing by programm-->
+		</div>	
+		<div class="reload">
+			<button class="reload__btn" onclick="document.location.reload();">Переиграть?</button>
+		</div>
+		<span class="timer">Timer:</span>
+		<div class="winner popup">
+			<div class="winner__header">
+				<div class="close">
+					<img class="close__img" src="img/icons/close1.png" alt="">
+				</div>
+				<h2>Вы победили! Ура!</h2>
+			</div>
+			<form class="form" action="#">
+				<div>Мы увековечим имя победителя в веках! Оно будет внесено в памятные скрижали самых  внимательных людей планеты!</div>
+				<div>Введите свое имя:</div>
+				<br>
+				<input type="text">
+				<br>
+				<button>Занести в историю</button>
+			</form>
+		</div>
+	</div>
+	</body>
+</div>
+
+<script src="js/birds.js">	</script>
+</html>

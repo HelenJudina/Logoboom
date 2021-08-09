@@ -1,0 +1,28 @@
+dl {
+	margin: 0 10px 15px 10px;
+	font-size: 35px;
+}
+
+dt {
+	margin: 15px 10px;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+dd {
+	margin-bottom: 10px;
+	font-size: 25px;
+	display: inline;
+	padding-left: 30px;
+	position: relative;
+}
+dd::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 25px;
+	height: 25px;
+	background: url("../img/icons/ok.png") no-repeat;
+	background-size: 100%;
+}
